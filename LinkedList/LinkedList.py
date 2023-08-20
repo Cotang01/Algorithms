@@ -1,6 +1,6 @@
 
 class Node:
-    def __init__(self, value):
+    def __init__(self, value: int):
         self.value = value
         self.next = None
         self.prev = None
@@ -14,7 +14,7 @@ class LinkedList:
     def is_empty(self):
         return self.head is None
 
-    def find(self, value):
+    def find(self, value: int):
         if self.is_empty():
             return None
         else:
@@ -25,7 +25,7 @@ class LinkedList:
                 current = current.next
             return None
 
-    def add_end(self, value):
+    def add_end(self, value: int):
         new_node = Node(value)
         if self.is_empty():
             self.head = new_node
@@ -35,7 +35,7 @@ class LinkedList:
             new_node.prev = self.tail
             self.tail = new_node
 
-    def add_start(self, value):
+    def add_start(self, value: int):
         new_node = Node(value)
         if self.is_empty():
             self.head = new_node
@@ -45,7 +45,7 @@ class LinkedList:
             self.head.prev = new_node
             self.head = new_node
 
-    def delete(self, value):
+    def delete(self, value: int):
         if self.is_empty():
             return None
         current_node = self.head
@@ -61,7 +61,7 @@ class LinkedList:
                     current_node.prev.next = current_node.next
                 current_node = current_node.next
 
-    def insert_after(self, value, node):
+    def insert_after(self, value: int, node: Node):
         next_node = node.next
         new_node = Node
         new_node.value = value
