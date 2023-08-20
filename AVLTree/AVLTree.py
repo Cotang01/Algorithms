@@ -91,7 +91,10 @@ class AVLTree:
     '''
 
     def delete(self, value: int) -> None:
-        return self._delete_assist(self.root, value)
+        if self.root.value == value:
+            self.root = None
+        else:
+            return self._delete_assist(self.root, value)
         # передаём во вспомогательную рекурсию root и значение для удаления
 
     def _delete_assist(self, del_node: Node, value: int):
