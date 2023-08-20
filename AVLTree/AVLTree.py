@@ -60,16 +60,22 @@ class AVLTree:
             else:  # в противном случае ищем свободное место дальше, передавая
                 # передавая в рекурсию левый узел
                 if current is not None:
+                    # обновляем высоту узла
                     self._update_height(current)
+                    # балансируем дерево
                     self._balance(current)
+                # вызываем рекурсию
                 self._insert_assist(current.left, value)
         if current.value < value:  # и так же, если новое значение больше узла
             if current.right is None:
                 current.right = Node(value)
             else:  # только передаётся уже правый узел
                 if current is not None:
+                    # обновляем высоту узла
                     self._update_height(current)
+                    # балансируем дерево
                     self._balance(current)
+                # вызываем рекурсию
                 self._insert_assist(current.right, value)
 
     '''
