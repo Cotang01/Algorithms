@@ -118,10 +118,10 @@ class AVLTree:
                 Передаём значение.
                 Рекурсивно удаляем элемент, от которого перенималось значение.
                 """
-                node_max_right = self._find_min(del_node.right)
-                del_node.value = node_max_right.value
+                node_min_right = self._find_min(del_node.right)
+                del_node.value = node_min_right.value
                 del_node.right = self._delete_assist(del_node.right,
-                                                     node_max_right.value)
+                                                     node_min_right.value)
         if del_node is not None:
             self._update_height(del_node)
             self._balance(del_node)
