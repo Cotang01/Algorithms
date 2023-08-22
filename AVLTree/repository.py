@@ -1,5 +1,5 @@
 import random
-from AVLTree import AVLTree
+from avl_tree import AVLTree
 
 
 class AVLTreeRemote:
