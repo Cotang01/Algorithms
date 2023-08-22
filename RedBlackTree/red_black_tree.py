@@ -144,8 +144,6 @@ class RedBlackTree:
                 del_node.value = node_max_left.value
                 del_node.right = self._delete_assist(del_node.right,
                                                      node_max_left.value)
-        if del_node is not None:
-            self._balance(del_node)  # производим балансировку
         return del_node
 
     # функция поиска минимального значения
