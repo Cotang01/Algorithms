@@ -1,4 +1,3 @@
-
 # создаём класс узла
 class Node:
     # для инициализации достаточно передать value
@@ -28,6 +27,7 @@ class AVLTree:
     поиск был возможен при условии принятия только значения искомого элемента
     то есть чтобы не требовалось дополнительных данных для получения результата
     '''
+
     # вспомогательная рекурсивная функция
     def _find_assist(self, current: Node, value: int):
         if current is None:  # если нет такого элемента, возвращаем None
@@ -48,9 +48,9 @@ class AVLTree:
     '''
 
     def insert(self, value: int) -> None:  # если дерево пустое, то первый
-        if self.root is None:      # добавляемый элемент становится корнем
+        if self.root is None:  # добавляемый элемент становится корнем
             self.root = Node(value)
-        else:                      # в противном случае запускается
+        else:  # в противном случае запускается
             self._insert_assist(self.root, value)  # вспомогательная рекурсия
 
     def _insert_assist(self, current: Node, value: int) -> None:
@@ -97,7 +97,10 @@ class AVLTree:
             elif self.root.right is None:
                 self.root = self.root.left
             else:
-                self.root = None
+                node_max_left = self._find_min(self.root.right)
+                self.root.value = node_max_left.value
+                self.root.right = self._delete_assist(self.root.right,
+                                                      node_max_left.value)
         else:
             return self._delete_assist(self.root, value)
         # передаём во вспомогательную рекурсию root и значение для удаления
@@ -238,14 +241,14 @@ class AVLTree:
             # левый правый поворот на случай, если правый поворот не избавит
             # от перегрузки дерева
             if self._get_balance(node.left) == 1:  # если у левого потомка
-                self._left_rotate(node.left)       # перегрузка (0 - -1 = 1)
+                self._left_rotate(node.left)  # перегрузка (0 - -1 = 1)
             self._right_rotate(node)
         # 2 значит, что дерево перегружено право и нужен поворот влево
         if balance == 2:
             # правый левый поворот на случай, если левый поворот не избавит
             # от перегрузки дерева
             if self._get_balance(node.right) == -1:  # если у правого потомка
-                self._right_rotate(node.right)       # перегрузка (-1 - 0 = -1)
+                self._right_rotate(node.right)  # перегрузка (-1 - 0 = -1)
             self._left_rotate(node)
 
     '''
