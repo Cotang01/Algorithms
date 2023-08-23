@@ -36,7 +36,7 @@ class RedBlackTree:
     '''
 
     # вспомогательная рекурсивная функция
-    def _find_assist(self, current: Node, value):
+    def _find_assist(self, current: Node, value: int) -> Node:
         if current is None:  # если нет такого элемента, возвращаем None
             return None
         elif current.value == value:  # если элемент нашёлся, возвращаем его
